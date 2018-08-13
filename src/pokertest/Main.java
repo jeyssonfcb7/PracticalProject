@@ -28,6 +28,7 @@ public class Main {
         try {
             BufferedReader bf = new BufferedReader(new FileReader("C:\\pokerdata.txt"));
             String sCadena;
+            
 
             int PoneWins = 0;
             int PtwoWins = 0;
@@ -36,26 +37,32 @@ public class Main {
             Double ProbPlay2toWin = 0.00;
             
             while ((sCadena = bf.readLine()) != null) {
-
+                System.out.println("hands:  "+sCadena);
+                
                 Deck deck = new Deck();
                 deck.allCards(sCadena);
                 Hand hand = new Hand(deck);                     
                 Hand hand2 = new Hand(deck);
-                hand.display();
-                ProbPlay1toWin+=hand.display();
+               // hand.display();
+                System.out.println("Player 2: "); 
+               ProbPlay1toWin+=hand.display();
                 hand.displayAll();
-                hand2.display();
+                System.out.println("----------------"); 
+                //hand2.display();
+                System.out.println("");
+                System.out.println("Player 1:");
                 ProbPlay2toWin+=hand2.display();
                 hand2.displayAll();
-                System.out.println(hand.compareTo(hand2));
+                System.out.println(""); 
+                //System.out.println(hand.compareTo(hand2));
                 switch (hand.compareTo(hand2)) {
                     case 1:
-                        System.out.println("Player 1 wins");
+                        System.out.println("Result: Player 2 wins");
                         PoneWins++;
                         
                         break;
                     case -1:
-                        System.out.println("Player 2 wins");
+                        System.out.println("Result: Player 1 wins");
                         PtwoWins++;
                         break;
                     default:
